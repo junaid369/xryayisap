@@ -1,6 +1,5 @@
 let express = require("express");
 const mongoose = require("mongoose");
-const oracledb = require("oracledb");
 const config = require("./config/config"); // importing config file
 const cron = require("node-cron");
 const bcrypt = require("bcrypt");
