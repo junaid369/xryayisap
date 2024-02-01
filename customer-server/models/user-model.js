@@ -55,6 +55,6 @@ const userSchema = new mongoose.Schema(
 );
 
 //login schmea
-const user = mongoose.model(process.env.USER_COLLECTION, userSchema);
+const user = mongoose.model("cln_user", userSchema);
 
 module.exports = { user };
