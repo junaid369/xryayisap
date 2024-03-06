@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 
 // Enable CORS
 app.use(cors({
-  origin: ['http://check.isap.clinic'],
+  origin: "*",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
