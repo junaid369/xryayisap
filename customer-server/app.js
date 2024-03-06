@@ -16,18 +16,34 @@ const cors = require("cors");
 
 let app = express();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "PUT, GET, POST, DELETE, HEAD, OPTIONS"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "PUT, GET, POST, DELETE, HEAD, OPTIONS"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+
+// Middleware to set CORS headers
+app.use((req, res, next) => {
+  // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  // Allow specified methods
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  // Allow specified headers
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  // Allow credentials (if needed)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  // Continue to the next middleware
   next();
 });
+
 
 //app.use(fileUpload()); / Parsers
 app.use(logger("dev"));
@@ -60,7 +76,7 @@ let originsWhitelist = [
 
 // Allow requests from example.com
 app.use(cors({
-  origin: 'http://xray.isap.clinic',
+  origin: 'https://xray.isap.clinic',
 }));
 
 
