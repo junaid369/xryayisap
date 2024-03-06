@@ -40,22 +40,29 @@ app.use(
   })
 );
 
-app.use(cors());
+// app.use(cors());
 let originsWhitelist = [
   //this is my front-end url for development
 
   "http://localhost:4200",
 ];
 
-let corsOptions = {
-  origin: function (origin, callback) {
-    let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
-    callback(null, isWhitelisted);
-  },
-  credentials: true,
-};
-//here is the cors magic
-app.use(cors(corsOptions));
+// let corsOptions = {
+//   origin: function (origin, callback) {
+//     let isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+//     callback(null, isWhitelisted);
+//   },
+//   credentials: true,
+// };
+// //here is the cors magic
+// app.use(cors(corsOptions));
+
+
+// Allow requests from example.com
+app.use(cors({
+  origin: 'http://xray.isap.clinic',
+}));
+
 
 async function run() {
   try {
