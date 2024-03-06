@@ -45,6 +45,13 @@ app.use((req, res, next) => {
 });
 
 
+// Enable CORS
+app.use(cors({
+  origin: ['http://check.isap.clinic'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 //app.use(fileUpload()); / Parsers
 app.use(logger("dev"));
 app.use(express.json({ limit: "200mb" }));
@@ -75,9 +82,9 @@ let originsWhitelist = [
 
 
 // Allow requests from example.com
-app.use(cors({
-  origin: 'https://xray.isap.clinic',
-}));
+// app.use(cors({
+//   origin: 'https://xray.isap.clinic',
+// }));
 
 
 async function run() {
